@@ -2,7 +2,7 @@ var app = {
 
   username: window.location.search.slice(10),
 
-  fetchServer: 'https://api.parse.com/1/classes/chatterbox',
+  fetchServer: 'http://127.0.0.1:3000/classes/chatterbox',
 
   currentData: {},
 
@@ -55,7 +55,6 @@ var app = {
     $.ajax({
       url: app.fetchServer,
       type: 'GET',
-      data: {order: '-createdAt'},
       contentType: 'application/json',
       success: function(data) {
         app.getRooms(data);
