@@ -3,6 +3,8 @@ var path = require("path");
 var filesys = require("fs");
 
 var storedData = []; 
+storedData = JSON.parse(filesys.readFileSync('messages.txt'));
+
 exports.requestHandler = function(request, response) {
 
   var full_path = path.join(process.cwd(),request.url);
@@ -28,6 +30,7 @@ exports.requestHandler = function(request, response) {
   else if (request.method === 'POST') {
     request.on('data', function(d) {
       storedData.push(JSON.parse(d));
+      filesys.writeFile('messages.txt', JSON.stringify(storedData));
     })
     response.writeHead(201, defaultCorsHeaders);
     response.end(JSON.stringify(201));

@@ -13,7 +13,7 @@ var app = {
       var room = escapeHtml(data.results[i].roomname);
       rooms[room] = true;
     }
-    $('#rooms').append($('<option id=mainroom>Main Room</option>'));
+    $('#rooms').append($('<option id=mainroom>Lobby</option>'));
     for (var key in rooms) {
       $('#rooms').append($('<option id="' + key + '" value= "' + key + '">' + key + '</option>'));
     }
@@ -30,7 +30,7 @@ var app = {
     var room = escapeHtml($('#rooms').val());
     if (room === 'Create A New Room') {
       app.createNewRoom();
-    } else if (room === "Main Room") {
+    } else if (room === "Lobby") {
       for (var i = 0; i < app.currentData.length; i++) {
         var messageObj = app.currentData[i];
         var user = escapeHtml(messageObj.username);
