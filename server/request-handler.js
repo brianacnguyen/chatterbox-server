@@ -11,7 +11,7 @@ this file and include it in basic-server.js so that it actually works.
 *Hint* Check out the node module documentation at http://nodejs.org/api/modules.html.
 
 **************************************************************/
-
+var storedData = []; 
 exports.requestHandler = function(request, response) {
   // Request and Response come from node's http module.
   //
@@ -52,12 +52,21 @@ exports.requestHandler = function(request, response) {
     //
     // Calling .end "flushes" the response's internal buffer, forcing
     // node to actually send all the data over to the client.
-    var obj = {results: []};
+    var obj = {results: storedData};
     response.end(JSON.stringify(obj));
   }
   else if (request.method === 'POST') {
     //response.statusCode = 201;
+    //console.log(request);
+    request.on('data', function(d) {
+      storedData.push(JSON.parse(d));
+    })
     response.writeHead(201, {'Content-Type': 'text/plain'});
+    response.end();
+    return response.finished;
+  }
+  else {
+    response.statusCode = 404;
     response.end();
     return response.finished;
   }
