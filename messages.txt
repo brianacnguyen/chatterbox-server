@@ -1,1 +1,1 @@
-[{"username":"anonymous","text":"Hello","roomname":"Lobby"},{"username":"anonymous","text":"Hi","roomname":"Lobby"}]
+[{"username":"anonymous","text":"Check","roomname":"Lobby","createdAt":"2015-10-27T23:28:00.934Z"},{"username":"anonymous","text":"Check Check","roomname":"Lobby","createdAt":"2015-10-27T23:43:34.278Z"}]

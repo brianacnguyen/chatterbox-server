@@ -55,6 +55,7 @@ var app = {
     $.ajax({
       url: app.fetchServer,
       type: 'GET',
+      // data: {order: '-createdAt'},
       contentType: 'application/json',
       success: function(data) {
         app.getRooms(data);
