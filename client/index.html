@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Twittler</title>
+    <link rel="stylesheet" href="styles/styles.css">
+
+    <!-- dependencies -->
+    <script src="bower_components/jquery/jquery.min.js"></script>
+    <script src="bower_components/underscore/underscore.js"></script>
+    <!-- your scripts -->
+    <script src="scripts/escapeHtml.js"></script>
+    <script src="scripts/app.js"></script>
+    <script src="env/config.js"></script> 
+  </head>
+  <body>
+    <div id="main">
+      <h1>twittler</h1>
+      <form>
+        <input id="newmessage" type=TEXT placeholder="Got Something to Say">
+        <input id="submit" type=BUTTON value="submit" onclick="app.insertMessage()">
+        <select id="rooms" onchange="app.updateMessagewithRoom()">
+          <option value="create">Create New Room</option>
+        </select>
+        <br>
+      <button id="update" type=BUTTON onclick="app.getMessages()">Update Messages</button>
+      </form>
+    <div id="posts"></div>
+      <!-- Your HTML goes here! -->
+    </div>
+    <script>
+    $(function() {
+      $("#posts").on('click', 'p', function() {
+        var user = $(this).attr('id');
+        $('#posts #' + user ).addClass('friends');
+      });
+    });
+     </script>
+  </body>
+</html>
