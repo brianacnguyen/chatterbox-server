@@ -18,12 +18,20 @@ var sendResponse = function(response, statusCode, data) {
 
 var actions = {
   'GET': function(request, response) {
-    var createdAt = request.url.split('?')[1];
-    var getData = storedData;
-    if (createdAt === 'order=-createdAt') {
-      getData = storedData.slice().reverse();
-    }
-    sendResponse(response, 200, {results: getData});
+    // if (request.url === '/') {
+    //   var getHtml = filesys.readFileSync('client/index.html');
+    //   var header = defaultCorsHeaders;
+    //   header['Content-Type'] = "text/html";
+    //   response.writeHead(200, header);
+    //   response.end(getHtml);
+    // } else {
+      var createdAt = request.url.split('?')[1];
+      var getData = storedData;
+      if (createdAt === 'order=-createdAt') {
+        getData = storedData.slice().reverse();
+      }
+      sendResponse(response, 200, {results: getData});
+    // }
   },
   'POST': function(request, response) {
     request.on('data', function(d) {
